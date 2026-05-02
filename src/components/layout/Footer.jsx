@@ -24,15 +24,18 @@ export default function Footer() {
             <div className="space-y-3 font-body text-sm">
               <div className="flex items-center gap-3 text-primary-foreground/70">
                 <Phone className="w-4 h-4 text-accent" />
-                <span>+34 600 000 000</span>
+                <span>+34 611 491 661</span>
               </div>
               <div className="flex items-center gap-3 text-primary-foreground/70">
                 <Mail className="w-4 h-4 text-accent" />
-                <span>info@tapizadosnova.com</span>
+                <span>tapizadosnova@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-primary-foreground/70">
                 <MapPin className="w-4 h-4 text-accent" />
-                <span>Madrid, España</span>
+                <div>
+                  <p>Calle Bilbao N1, 1ª planta</p>
+                  <p>08191 Rubí, Barcelona</p>
+                </div>
               </div>
             </div>
           </div>
@@ -58,6 +61,12 @@ export default function Footer() {
           <div className="flex gap-6">
             <Link to="/presupuesto" className="text-xs text-primary-foreground/50 hover:text-accent font-body transition-colors">
               Presupuesto Online
+            </Link>
+            <Link to="/faq" className="text-xs text-primary-foreground/50 hover:text-accent font-body transition-colors">
+              Preguntas Frecuentes
+            </Link>
+            <Link to="/privacidad" className="text-xs text-primary-foreground/50 hover:text-accent font-body transition-colors">
+              Política de Privacidad
             </Link>
           </div>
         </div>

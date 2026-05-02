@@ -8,6 +8,8 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Home from './pages/Home';
 import QuoteBuilder from './pages/QuoteBuilder';
 import Admin from './pages/Admin';
+import FAQ from './pages/FAQ';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -34,6 +36,8 @@ const AuthenticatedApp = () => {
       <Route path="/" element={<Home />} />
       <Route path="/presupuesto" element={<QuoteBuilder />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/faq" element={<FAQ />} />
+      <Route path="/privacidad" element={<PrivacyPolicy />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

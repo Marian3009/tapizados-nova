@@ -39,9 +39,9 @@ export default function Contact() {
             className="space-y-6"
           >
             {[
-              { icon: Phone, label: 'Teléfono', value: '+34 600 000 000', sublabel: 'Lunes a Viernes, 9:00 - 18:00' },
-              { icon: Mail, label: 'Email', value: 'info@tapizadosnova.com', sublabel: 'Respondemos en 24h' },
-              { icon: MapPin, label: 'Ubicación', value: 'Madrid, España', sublabel: 'Servicio a domicilio' },
+              { icon: Phone, label: 'Teléfono', value: '+34 611 491 661', sublabel: 'Lunes a Viernes, 9:00 - 18:00' },
+              { icon: Mail, label: 'Email', value: 'tapizadosnova@gmail.com', sublabel: 'Respondemos en 24h' },
+              { icon: MapPin, label: 'Ubicación', value: 'Calle Bilbao N1, 1ª planta', sublabel: '08191 Rubí, Barcelona' },
             ].map((item) => (
               <div
                 key={item.label}

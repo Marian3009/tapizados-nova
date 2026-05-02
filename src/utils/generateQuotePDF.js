@@ -148,14 +148,49 @@ export function generateQuotePDF(quote) {
   doc.setTextColor(42, 48, 60);
   doc.text('ANTICIPO (50%)', margin + 4, y + 5);
   doc.text(`${advance.toFixed(2)} €`, pageWidth - margin - 25, y + 5);
+  y += 22;
+
+  // Bank transfer section
+  doc.setTextColor(42, 48, 60);
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('DATOS PARA TRANSFERENCIA BANCARIA', margin, y);
+  y += 2;
+  doc.setDrawColor(198, 165, 100);
+  doc.setLineWidth(1);
+  doc.line(margin, y, margin + 90, y);
+  y += 10;
+
+  doc.setFillColor(248, 247, 244);
+  doc.rect(margin, y - 4, contentWidth, 28, 'F');
+  doc.setDrawColor(198, 165, 100);
+  doc.setLineWidth(0.5);
+  doc.rect(margin, y - 4, contentWidth, 28, 'S');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.setTextColor(80, 80, 80);
+  doc.text('Titular:', margin + 4, y + 4);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Tapizados Nova', margin + 30, y + 4);
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('IBAN:', margin + 4, y + 13);
+  doc.setFont('helvetica', 'normal');
+  doc.text('ES00 0000 0000 0000 0000 0000', margin + 30, y + 13);
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('Concepto:', margin + 4, y + 22);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`Presupuesto ${quoteNum} — ${quote.client_name || ''}`, margin + 30, y + 22);
 
   // Footer
   doc.setTextColor(150, 150, 150);
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
   doc.text('Tapizados Nova — Decoración Textil', margin, 280);
-  doc.text('info@tapizadosnova.com | +34 600 000 000', margin, 285);
-  doc.text('Presupuesto válido durante 30 días', pageWidth - margin - 55, 285);
+  doc.text('tapizadosnova@gmail.com | +34 611 491 661 | Calle Bilbao N1 1ª planta, 08191 Rubí (Barcelona)', margin, 285);
+  doc.text('Presupuesto válido durante 30 días', pageWidth - margin - 55, 290);
 
   doc.save(`Presupuesto_TapizadosNova_${quoteNum}.pdf`);
 }
