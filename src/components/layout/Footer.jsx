@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-heading text-lg font-bold">N</span>
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-[#f5ede4] flex items-center justify-center shrink-0">
+                <img src="https://media.base44.com/images/public/69f638fb6d7443aecf38ad91/adb9908b2_file_000000007a3072469a4fc05aa39a1039.png" alt="Logo" className="w-full h-full object-cover" />
               </div>
               <span className="font-heading text-xl font-semibold">Tapizados Nova</span>
             </div>
