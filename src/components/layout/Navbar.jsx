@@ -31,9 +31,10 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full overflow-hidden bg-[#f5ede4] flex items-center justify-center shrink-0">
-            <img src="https://media.base44.com/images/public/69f638fb6d7443aecf38ad91/adb9908b2_file_000000007a3072469a4fc05aa39a1039.png" alt="Logo" className="w-full h-full object-cover" />
+          <div className="w-12 h-12 rounded-full overflow-hidden bg-[#f5ede4] flex items-center justify-center shrink-0">
+            <img src="https://media.base44.com/images/public/69f638fb6d7443aecf38ad91/adb9908b2_file_000000007a3072469a4fc05aa39a1039.png" alt="Logo" className="w-[85%] h-[85%] object-contain" />
           </div>
+          <span className="font-heading text-xl font-semibold tracking-tight">Tapizados Nova</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
