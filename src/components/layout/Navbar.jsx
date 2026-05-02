@@ -34,10 +34,6 @@ export default function Navbar() {
           <div className="w-10 h-10 rounded-full overflow-hidden bg-[#f5ede4] flex items-center justify-center shrink-0">
             <img src="https://media.base44.com/images/public/69f638fb6d7443aecf38ad91/adb9908b2_file_000000007a3072469a4fc05aa39a1039.png" alt="Logo" className="w-full h-full object-cover" />
           </div>
-          <div>
-            <span className="font-heading text-xl font-semibold tracking-tight">Tapizados Nova</span>
-            <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase -mt-0.5">Decoración Textil</p>
-          </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
