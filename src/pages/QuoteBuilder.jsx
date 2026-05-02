@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import PhotoUploader from '../components/quote/PhotoUploader';
+import FabricCatalog from '../components/quote/FabricCatalog';
 import VisualizationPreview from '../components/quote/VisualizationPreview';
 import QuoteForm from '../components/quote/QuoteForm';
 import PriceSummary from '../components/quote/PriceSummary';
@@ -25,6 +26,7 @@ export default function QuoteBuilder() {
   });
   const [objectPhotos, setObjectPhotos] = useState([]);
   const [fabricPhotos, setFabricPhotos] = useState([]);
+  const [selectedFabric, setSelectedFabric] = useState(null);
   const [visualizationUrl, setVisualizationUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -106,12 +108,23 @@ export default function QuoteBuilder() {
                     photos={objectPhotos}
                     onPhotosChange={setObjectPhotos}
                   />
-                  <PhotoUploader
-                    label="Tejido deseado"
-                    description="Sube fotos del tejido o tela que deseas utilizar"
-                    photos={fabricPhotos}
-                    onPhotosChange={setFabricPhotos}
-                  />
+                  <div className="space-y-4">
+                    <FabricCatalog
+                      selectedFabric={selectedFabric}
+                      onSelect={setSelectedFabric}
+                      onUseAsPhoto={(url) => setFabricPhotos([url])}
+                    />
+                    <PhotoUploader
+                      label="O sube tu propia foto de tejido"
+                      description="Sube una foto de un tejido personalizado"
+                      photos={selectedFabric ? [] : fabricPhotos}
+                      onPhotosChange={(photos) => {
+                        setFabricPhotos(photos);
+                        if (photos.length > 0) setSelectedFabric(null);
+                      }}
+                      maxPhotos={1}
+                    />
+                  </div>
                 </div>
               </div>
 
