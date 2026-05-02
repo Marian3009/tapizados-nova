@@ -1,8 +1,9 @@
 import React from 'react';
-import { X, Phone, Mail, MapPin, FileText, Image } from 'lucide-react';
+import { X, Phone, Mail, MapPin, FileText, Image, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { motion, AnimatePresence } from 'framer-motion';
+import { generateQuotePDF } from '@/utils/generateQuotePDF';
 
 export default function QuoteDetailModal({ quote, onClose }) {
   const price = quote.price_without_vat || 0;
@@ -130,8 +131,11 @@ export default function QuoteDetailModal({ quote, onClose }) {
           </div>
         </div>
 
-        <div className="px-6 pb-6">
-          <Button onClick={onClose} variant="outline" className="w-full rounded-full font-body">
+        <div className="px-6 pb-6 flex gap-3">
+          <Button onClick={() => generateQuotePDF(quote)} className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-body gap-2">
+            <Download className="w-4 h-4" /> Descargar PDF
+          </Button>
+          <Button onClick={onClose} variant="outline" className="flex-1 rounded-full font-body">
             Cerrar
           </Button>
         </div>

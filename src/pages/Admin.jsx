@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useAuth } from '@/lib/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, FileText, Eye } from 'lucide-react';
+import { ArrowLeft, FileText, Eye, Download } from 'lucide-react';
 import QuoteDetailModal from '@/components/admin/QuoteDetailModal';
+import { generateQuotePDF } from '@/utils/generateQuotePDF';
 
 const STATUS_LABELS = {
   pending: 'Pendiente',
@@ -135,14 +136,24 @@ export default function Admin() {
                         </Select>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => setSelectedQuote(quote)}
-                          className="rounded-full gap-1.5 text-xs"
-                        >
-                          <Eye className="w-3.5 h-3.5" /> Ver
-                        </Button>
+                       <div className="flex items-center justify-end gap-1">
+                         <Button
+                           size="sm"
+                           variant="ghost"
+                           onClick={() => setSelectedQuote(quote)}
+                           className="rounded-full gap-1.5 text-xs"
+                         >
+                           <Eye className="w-3.5 h-3.5" /> Ver
+                         </Button>
+                         <Button
+                           size="sm"
+                           variant="ghost"
+                           onClick={() => generateQuotePDF(quote)}
+                           className="rounded-full gap-1.5 text-xs text-accent hover:text-accent"
+                         >
+                           <Download className="w-3.5 h-3.5" /> PDF
+                         </Button>
+                       </div>
                       </td>
                     </tr>
                   ))}
