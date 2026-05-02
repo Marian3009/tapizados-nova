@@ -9,10 +9,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-heading text-lg font-bold">N</span>
-              </div>
-              <span className="font-heading text-xl font-semibold">Tapizados Nova</span>
+              <img
+                src="https://media.base44.com/images/public/69f638fb6d7443aecf38ad91/74c2543d2_generated_image.png"
+                alt="Tapizados Nova"
+                className="h-12 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-primary-foreground/70 font-body text-sm leading-relaxed">
               Especialistas en tapicería y decoración textil. Transformamos tus muebles con los mejores tejidos y acabados profesionales.

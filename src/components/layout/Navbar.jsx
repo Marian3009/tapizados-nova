@@ -31,13 +31,11 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-heading text-lg font-bold">N</span>
-          </div>
-          <div>
-            <span className="font-heading text-xl font-semibold tracking-tight">Tapizados Nova</span>
-            <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase -mt-0.5">Decoración Textil</p>
-          </div>
+          <img
+            src="https://media.base44.com/images/public/69f638fb6d7443aecf38ad91/74c2543d2_generated_image.png"
+            alt="Tapizados Nova"
+            className="h-12 w-auto object-contain"
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
