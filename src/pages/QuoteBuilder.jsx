@@ -9,6 +9,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import PhotoUploader from '../components/quote/PhotoUploader';
 import FabricCatalog from '../components/quote/FabricCatalog';
+import PriceEstimator, { calculatePrice } from '../components/quote/PriceEstimator';
 import VisualizationPreview from '../components/quote/VisualizationPreview';
 import QuoteForm from '../components/quote/QuoteForm';
 import PriceSummary from '../components/quote/PriceSummary';
@@ -27,11 +28,13 @@ export default function QuoteBuilder() {
   const [objectPhotos, setObjectPhotos] = useState([]);
   const [fabricPhotos, setFabricPhotos] = useState([]);
   const [selectedFabric, setSelectedFabric] = useState(null);
+  const [estimator, setEstimator] = useState({ furnitureTypeId: '', sizeId: 'm', quantity: 1, customBase: '' });
   const [visualizationUrl, setVisualizationUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  const price = formData.price_without_vat || 0;
+  const estimatedPrice = calculatePrice({ ...estimator, fabricCategory: selectedFabric?.category });
+  const price = estimatedPrice;
   const vat = price * 0.21;
   const total = price + vat;
   const advance = total * 0.5;
@@ -45,6 +48,7 @@ export default function QuoteBuilder() {
     setSaving(true);
     await base44.entities.Quote.create({
       ...formData,
+      price_without_vat: estimatedPrice,
       object_photos: objectPhotos,
       fabric_photos: fabricPhotos,
       visualization_url: visualizationUrl,
@@ -98,6 +102,15 @@ export default function QuoteBuilder() {
                 <QuoteForm formData={formData} onChange={setFormData} />
               </div>
 
+              {/* Price Estimator */}
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+                <PriceEstimator
+                  estimator={estimator}
+                  onChange={setEstimator}
+                  fabricCategory={selectedFabric?.category}
+                />
+              </div>
+
               {/* Photo uploads */}
               <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
                 <h3 className="font-heading text-lg font-semibold mb-6">Fotos del Proyecto</h3>
@@ -146,11 +159,15 @@ export default function QuoteBuilder() {
               className="lg:col-span-2 space-y-6"
             >
               <div className="lg:sticky lg:top-28 space-y-6">
-                <PriceSummary priceWithoutVat={formData.price_without_vat} />
+                <PriceSummary
+                  priceWithoutVat={estimatedPrice}
+                  estimator={estimator}
+                  fabricCategory={selectedFabric?.category}
+                />
 
                 {/* Actions */}
                 <div className="space-y-3">
-                  <QuotePDFGenerator formData={formData} />
+                  <QuotePDFGenerator formData={{ ...formData, price_without_vat: estimatedPrice }} />
 
                   <Button
                     onClick={handleSaveQuote}

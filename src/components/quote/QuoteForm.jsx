@@ -66,18 +66,6 @@ export default function QuoteForm({ formData, onChange }) {
       </div>
 
       <div>
-        <Label className="font-body text-sm">Precio sin IVA (€) *</Label>
-        <Input
-          type="number"
-          step="0.01"
-          value={formData.price_without_vat || ''}
-          onChange={(e) => handleChange('price_without_vat', parseFloat(e.target.value) || 0)}
-          placeholder="0.00"
-          className="mt-1.5 rounded-xl h-11 font-body"
-        />
-      </div>
-
-      <div>
         <Label className="font-body text-sm">Notas adicionales</Label>
         <Textarea
           value={formData.notes || ''}
