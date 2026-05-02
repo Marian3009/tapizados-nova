@@ -1,0 +1,79 @@
+{
+  "name": "Quote",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "description": "Nombre del cliente"
+    },
+    "client_email": {
+      "type": "string",
+      "description": "Email del cliente"
+    },
+    "client_phone": {
+      "type": "string",
+      "description": "Tel\u00e9fono del cliente"
+    },
+    "client_address": {
+      "type": "string",
+      "description": "Direcci\u00f3n del cliente"
+    },
+    "work_description": {
+      "type": "string",
+      "description": "Descripci\u00f3n del trabajo a realizar"
+    },
+    "object_photos": {
+      "type": "array",
+      "description": "Fotos del objeto a tapizar",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fabric_photos": {
+      "type": "array",
+      "description": "Fotos del tejido elegido",
+      "items": {
+        "type": "string"
+      }
+    },
+    "visualization_url": {
+      "type": "string",
+      "description": "URL de la visualizaci\u00f3n generada"
+    },
+    "price_without_vat": {
+      "type": "number",
+      "description": "Precio sin IVA"
+    },
+    "vat_amount": {
+      "type": "number",
+      "description": "Importe del IVA (21%)"
+    },
+    "total_price": {
+      "type": "number",
+      "description": "Precio total con IVA"
+    },
+    "advance_payment": {
+      "type": "number",
+      "description": "Anticipo del 50%"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "accepted",
+        "rejected",
+        "completed"
+      ],
+      "default": "pending",
+      "description": "Estado del presupuesto"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notas adicionales"
+    }
+  },
+  "required": [
+    "client_name",
+    "work_description"
+  ]
+}
