@@ -1,57 +1,51 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Check } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { ChevronDown, ChevronUp, Check, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const FABRICS = [
-  {
-    category: 'Terciopelo',
-    items: [
-      { id: 'terciopelo-azul', name: 'Terciopelo Azul Noche', color: '#2B3A6B', url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
-      { id: 'terciopelo-verde', name: 'Terciopelo Verde Bosque', color: '#2D5A3D', url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80' },
-      { id: 'terciopelo-mostaza', name: 'Terciopelo Mostaza', color: '#C9A84C', url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80' },
-      { id: 'terciopelo-burdeos', name: 'Terciopelo Burdeos', color: '#6B2737', url: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&q=80' },
-    ],
-  },
-  {
-    category: 'Lino & Algodón',
-    items: [
-      { id: 'lino-crudo', name: 'Lino Crudo Natural', color: '#D4C5A9', url: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&q=80' },
-      { id: 'lino-gris', name: 'Lino Gris Piedra', color: '#8E8E8E', url: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80' },
-      { id: 'algodon-blanco', name: 'Algodón Blanco Roto', color: '#F5F0E8', url: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&q=80' },
-    ],
-  },
-  {
-    category: 'Cuero & Polipiel',
-    items: [
-      { id: 'cuero-cognac', name: 'Cuero Cognac', color: '#9B5D2E', url: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&q=80' },
-      { id: 'cuero-negro', name: 'Cuero Negro', color: '#1A1A1A', url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
-      { id: 'polipiel-blanca', name: 'Polipiel Blanca', color: '#F0EDE8', url: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80' },
-    ],
-  },
-  {
-    category: 'Jacquard & Estampados',
-    items: [
-      { id: 'jacquard-floral', name: 'Jacquard Floral Clásico', color: '#8B7355', url: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&q=80' },
-      { id: 'estampado-geometrico', name: 'Estampado Geométrico', color: '#4A6B8A', url: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&q=80' },
-    ],
-  },
-];
+import { GUELL_LAMADRID_COLLECTIONS } from '@/data/guell-lamadrid-collections';
 
 export default function FabricCatalog({ selectedFabric, onSelect, onUseAsPhoto }) {
   const [open, setOpen] = useState(false);
-  const [openCategory, setOpenCategory] = useState(null);
+  const [expandedCollection, setExpandedCollection] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSelect = (fabric) => {
-    onSelect(fabric);
-    onUseAsPhoto(fabric.url);
+  const categories = useMemo(() => {
+    return Array.from(new Set(GUELL_LAMADRID_COLLECTIONS.map((c) => c.category)));
+  }, []);
+
+  const filteredCollections = useMemo(() => {
+    return GUELL_LAMADRID_COLLECTIONS.filter((collection) => {
+      const matchesCategory = !selectedCategory || collection.category === selectedCategory;
+      const matchesSearch =
+        !searchTerm ||
+        collection.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        collection.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        collection.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        collection.colors.some((color) => color.colorName.toLowerCase().includes(searchTerm.toLowerCase()));
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchTerm]);
+
+  const handleSelectColor = (collection, color) => {
+    const fabricData = {
+      id: `${collection.id}-${color.reference}`,
+      name: `${collection.name} - ${color.colorName}`,
+      category: collection.category,
+      url: color.image,
+      reference: color.reference,
+      collection: collection.name,
+      color: color.colorName,
+    };
+    onSelect(fabricData);
+    onUseAsPhoto(fabricData.url);
     setOpen(false);
   };
 
   return (
     <div>
-      <label className="font-body text-sm font-medium block mb-2">Tejido del catálogo</label>
+      <label className="font-body text-sm font-medium block mb-2">Tejido Güell Lamadrid</label>
       <p className="text-xs text-muted-foreground mb-3 font-body">
-        Elige un tejido de nuestro catálogo o sube tu propia foto
+        Elige un tejido de nuestro catálogo premium o sube tu propia foto
       </p>
 
       {/* Selected fabric preview */}
@@ -73,11 +67,11 @@ export default function FabricCatalog({ selectedFabric, onSelect, onUseAsPhoto }
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-border bg-card hover:border-accent/40 hover:bg-accent/5 transition-all font-body text-sm"
       >
-        <span className="text-muted-foreground">{open ? 'Cerrar catálogo' : 'Ver catálogo de tejidos'}</span>
+        <span className="text-muted-foreground">{open ? 'Cerrar catálogo' : 'Ver catálogo Güell Lamadrid'}</span>
         {open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
       </button>
 
-      {/* Catalog dropdown */}
+      {/* Catalog modal */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -86,66 +80,129 @@ export default function FabricCatalog({ selectedFabric, onSelect, onUseAsPhoto }
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden"
           >
-            <div className="mt-2 border border-border rounded-xl bg-card overflow-hidden">
-              {FABRICS.map((group) => (
-                <div key={group.category} className="border-b border-border last:border-0">
-                  <button
-                    onClick={() => setOpenCategory(openCategory === group.category ? null : group.category)}
-                    className="w-full flex items-center justify-between px-4 py-3 hover:bg-muted/50 transition-colors font-body text-sm font-medium"
-                  >
-                    <span>{group.category}</span>
-                    {openCategory === group.category
-                      ? <ChevronUp className="w-4 h-4 text-muted-foreground" />
-                      : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
-                  </button>
-
-                  <AnimatePresence>
-                    {openCategory === group.category && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="grid grid-cols-2 gap-2 p-3 bg-muted/20">
-                          {group.items.map((fabric) => {
-                            const isSelected = selectedFabric?.id === fabric.id;
-                            return (
-                              <button
-                                key={fabric.id}
-                                onClick={() => handleSelect({ ...fabric, category: group.category })}
-                                className={`relative flex flex-col rounded-xl overflow-hidden border-2 transition-all text-left ${
-                                  isSelected ? 'border-accent shadow-md' : 'border-transparent hover:border-accent/30'
-                                }`}
-                              >
-                                <div className="aspect-[4/3] w-full overflow-hidden">
-                                  <img
-                                    src={fabric.url}
-                                    alt={fabric.name}
-                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                  />
-                                </div>
-                                <div className="p-2 bg-card flex items-center gap-2">
-                                  <div
-                                    className="w-4 h-4 rounded-full border border-border shrink-0"
-                                    style={{ backgroundColor: fabric.color }}
-                                  />
-                                  <span className="font-body text-xs leading-tight">{fabric.name}</span>
-                                </div>
-                                {isSelected && (
-                                  <div className="absolute top-2 right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center shadow">
-                                    <Check className="w-3 h-3 text-accent-foreground" />
-                                  </div>
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+            <div className="mt-2 border border-border rounded-xl bg-card overflow-hidden max-h-96 overflow-y-auto">
+              {/* Search bar */}
+              <div className="sticky top-0 bg-card border-b border-border p-3 z-10">
+                <div className="relative">
+                  <Search className="absolute left-3 top-2.5 w-4 h-4 text-muted-foreground" />
+                  <input
+                    type="text"
+                    placeholder="Buscar colección o color..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 text-sm border border-border rounded-lg bg-muted/30 focus:outline-none focus:ring-2 focus:ring-accent/50"
+                  />
                 </div>
-              ))}
+              </div>
+
+              {/* Category filters */}
+              <div className="sticky top-12 bg-muted/20 border-b border-border p-2 flex flex-wrap gap-1 z-10">
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-3 py-1 text-xs rounded-full transition-all font-body ${
+                    selectedCategory === null
+                      ? 'bg-accent text-accent-foreground'
+                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  }`}
+                >
+                  Todas
+                </button>
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-3 py-1 text-xs rounded-full transition-all font-body ${
+                      selectedCategory === category
+                        ? 'bg-accent text-accent-foreground'
+                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+
+              {/* Collections */}
+              <div className="divide-y divide-border">
+                {filteredCollections.map((collection) => (
+                  <div key={collection.id} className="border-b border-border last:border-0">
+                    {/* Collection header */}
+                    <button
+                      onClick={() => setExpandedCollection(expandedCollection === collection.id ? null : collection.id)}
+                      className="w-full flex items-center justify-between px-4 py-3 hover:bg-muted/50 transition-colors font-body text-sm font-medium text-left"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-foreground">{collection.name}</p>
+                        <p className="text-xs text-muted-foreground line-clamp-1">{collection.description}</p>
+                      </div>
+                      {expandedCollection === collection.id ? (
+                        <ChevronUp className="w-4 h-4 text-muted-foreground ml-2 shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-muted-foreground ml-2 shrink-0" />
+                      )}
+                    </button>
+
+                    {/* Color variations */}
+                    <AnimatePresence>
+                      {expandedCollection === collection.id && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="p-3 bg-muted/20">
+                            <p className="text-xs font-medium text-muted-foreground mb-2">
+                              Composición: {collection.composition}
+                            </p>
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+                              {collection.colors.map((color, idx) => {
+                                const isSelected =
+                                  selectedFabric?.id === `${collection.id}-${color.reference}`;
+                                return (
+                                  <button
+                                    key={idx}
+                                    onClick={() => handleSelectColor(collection, color)}
+                                    className={`flex flex-col items-center p-2 rounded-lg border-2 transition-all ${
+                                      isSelected
+                                        ? 'border-accent bg-accent/10 shadow-md'
+                                        : 'border-border hover:border-accent/50'
+                                    }`}
+                                  >
+                                    <img
+                                      src={color.image}
+                                      alt={color.colorName}
+                                      className="w-full h-16 object-cover rounded mb-1"
+                                    />
+                                    <span className="text-xs font-semibold text-foreground text-center line-clamp-1">
+                                      {color.reference}
+                                    </span>
+                                    <span className="text-xs text-muted-foreground text-center line-clamp-1">
+                                      {color.colorName}
+                                    </span>
+                                    {isSelected && (
+                                      <div className="absolute mt-12 w-5 h-5 bg-accent rounded-full flex items-center justify-center shadow">
+                                        <Check className="w-3 h-3 text-accent-foreground" />
+                                      </div>
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+
+              {/* Empty state */}
+              {filteredCollections.length === 0 && (
+                <div className="p-6 text-center">
+                  <p className="text-sm text-muted-foreground">No se encontraron colecciones</p>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
