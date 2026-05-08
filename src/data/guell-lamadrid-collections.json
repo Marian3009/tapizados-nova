@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "name": "ALISIO",
+    "category": "Visillos",
+    "description": "Tejido sostenible de doble ancho diseñado para visillos. Aporta ligereza y movimiento a cualquier espacio.",
+    "composition": "Fibras sostenibles, doble ancho",
+    "tags": ["sostenible", "visillos", "ligero"],
+    "colors": [
+      { "reference": "COL. 4", "colorName": "Blanco natural", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 5", "colorName": "Crema suave", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 6", "colorName": "Beige claro", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 8", "colorName": "Gris perla", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 11", "colorName": "Gris topo", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 13", "colorName": "Gris medio", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 15", "colorName": "Gris oscuro", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 16", "colorName": "Rosa pálido", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 20", "colorName": "Beige cálido", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 22", "colorName": "Gris verdoso", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 24", "colorName": "Azul grisáceo", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" },
+      { "reference": "COL. 25", "colorName": "Azul claro", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-alisio-curtains-plain-solid_350x.jpg" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "AMARA",
+    "category": "Tapicería",
+    "description": "Expresa la serenidad espiritual de Oriente y la belleza nacida entre la naturaleza, el arte y la contemplación.",
+    "composition": "100% algodón con rayas",
+    "tags": ["oriental", "rayas", "algodón"],
+    "colors": [
+      { "reference": "COL. 1", "colorName": "Multicolor natural", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-amara-upholstery-stripes_350x.jpg" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "ARAN",
+    "category": "Accesorios",
+    "description": "Con un punto trenzado que recuerda al tejido artesanal, aporta calidez y relieve a la decoración.",
+    "composition": "Lana, punto artesanal",
+    "tags": ["artesanal", "lana", "textura"],
+    "colors": [
+      { "reference": "COL. GRIS", "colorName": "Gris", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-aran-accessories-grey-semi-plain-wool_350x.jpg" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "BAHARI",
+    "category": "Tapicería",
+    "description": "Despliega un paisaje exuberante de vegetación y fauna sobre 100% algodón.",
+    "composition": "100% algodón estampado",
+    "tags": ["estampado", "naturaleza", "algodón"],
+    "colors": [
+      { "reference": "COL. AZUL", "colorName": "Azul con motivos naturales", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-bahari-upholstery-blue-design-printed_350x.jpg" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "BOSCARA",
+    "category": "Tapicería",
+    "description": "Espectacular jacquard que representa un paisaje de flores de otoño en 100% algodón.",
+    "composition": "100% algodón jacquard",
+    "tags": ["jacquard", "floral", "otoño"],
+    "colors": [
+      { "reference": "COL. OTOÑO", "colorName": "Tonos otoñales", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-boscara-upholstery-jacquard-floral-decorative-pattern_350x.jpg" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "CAMILA",
+    "category": "Tapicería",
+    "description": "Combina un diseño floral con la textura natural de una base de espiga en algodón y lino.",
+    "composition": "Algodón y lino con diseño floral",
+    "tags": ["floral", "algodón-lino", "natural"],
+    "colors": [
+      { "reference": "COL. VERDE", "colorName": "Verde con flores", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-camila-upholstery-green-floral-printed_350x.jpg" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "CARAVAN",
+    "category": "Tapicería",
+    "description": "Viaja a través de paisajes lejanos y culturas diversas, reflejando la tradición artesana.",
+    "composition": "Algodón con patrón geométrico",
+    "tags": ["étnico", "geométrico", "artesanal"],
+    "colors": [
+      { "reference": "COL. ÉTNICO", "colorName": "Multicolor étnico", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-caravan-upholstery-geometric-decorative-pattern_350x.jpg" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "CEYLAN",
+    "category": "Tapicería",
+    "description": "Estampado de hojas anchas y formas orgánicas, realizado sobre base de lino en dos gamas cromáticas.",
+    "composition": "Lino con estampado de hojas",
+    "tags": ["botánico", "lino", "orgánico"],
+    "colors": [
+      { "reference": "COL. VERDE", "colorName": "Verde natural", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-ceylan-upholstery-green-floral-printed_350x.jpg" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "CLOTILDE",
+    "category": "Decoración",
+    "description": "Estampado floral con trazos definidos y colores equilibrados, refleja la sofisticación de los diseños clásicos.",
+    "composition": "Algodón estampado",
+    "tags": ["floral", "clásico", "sofisticado"],
+    "colors": [
+      { "reference": "COL. CLÁSICO", "colorName": "Tonos clásicos", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-clotilde-upholstery-floral-printed_350x.jpg" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "COLETTE",
+    "category": "Decoración",
+    "description": "Recupera el refinamiento de la decoración francesa, con texturas suaves y rayas.",
+    "composition": "Algodón y lino con rayas",
+    "tags": ["francés", "rayas", "refinado"],
+    "colors": [
+      { "reference": "COL. BLANCO", "colorName": "Blanco con rayas", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-colette-upholstery-stripes-plain_350x.jpg" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "GRIMALDI",
+    "category": "Cortinas",
+    "description": "Celebra la raya en todas sus versiones con tejidos naturales para cortinas y accesorios.",
+    "composition": "Fibras naturales con rayas",
+    "tags": ["rayas", "cortinas", "natural"],
+    "colors": [
+      { "reference": "COL. RAYADO", "colorName": "Multicolor rayado", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-grimaldi-curtains-stripes-plain_350x.jpg" }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "KHAN",
+    "category": "Decoración",
+    "description": "Viaja entre culturas y legado textil a través de rutas antiguas con mirada contemporánea.",
+    "composition": "Algodón con motivos orientales",
+    "tags": ["oriental", "contemporáneo", "cultural"],
+    "colors": [
+      { "reference": "COL. TIERRA", "colorName": "Tonos tierra", "image": "https://grupolamadrid.com/inc/assets/images/photo_web_ambiente_coleccion-350x/fabric-khan-upholstery-geometric-pattern_350x.jpg" }
+    ]
+  }
+]

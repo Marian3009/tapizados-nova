@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ChevronDown, ChevronUp, Check, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GUELL_LAMADRID_COLLECTIONS } from '@/data/guell-lamadrid-collections';
+import GUELL_LAMADRID_COLLECTIONS from '@/data/guell-lamadrid-collections.json';
 
 export default function FabricCatalog({ selectedFabric, onSelect, onUseAsPhoto }) {
   const [open, setOpen] = useState(false);
