@@ -43,7 +43,7 @@ export default function FabricCatalog({ selectedFabric, onSelect, onUseAsPhoto }
 
   return (
     <div>
-      <label className="font-body text-sm font-medium block mb-2">Tejido Güell Lamadrid</label>
+      <label className="font-body text-sm font-medium block mb-2">Catálogo Tapizados Nova</label>
       <p className="text-xs text-muted-foreground mb-3 font-body">
         Elige un tejido de nuestro catálogo premium o sube tu propia foto
       </p>
@@ -67,7 +67,7 @@ export default function FabricCatalog({ selectedFabric, onSelect, onUseAsPhoto }
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-border bg-card hover:border-accent/40 hover:bg-accent/5 transition-all font-body text-sm"
       >
-        <span className="text-muted-foreground">{open ? 'Cerrar catálogo' : 'Ver catálogo Güell Lamadrid'}</span>
+        <span className="text-muted-foreground">{open ? 'Cerrar catálogo' : 'Ver catálogo Tapizados Nova'}</span>
         {open ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
       </button>
 
